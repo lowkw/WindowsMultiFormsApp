@@ -28,33 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxAdminName = new System.Windows.Forms.TextBox();
+            this.textBoxAdminID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBoxAdminNewName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox1
+            // textBoxAdminName
             // 
-            this.textBox1.Location = new System.Drawing.Point(51, 73);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.Text = "Name";
+            this.textBoxAdminName.Location = new System.Drawing.Point(51, 73);
+            this.textBoxAdminName.Name = "textBoxAdminName";
+            this.textBoxAdminName.Size = new System.Drawing.Size(100, 20);
+            this.textBoxAdminName.TabIndex = 0;
+            this.textBoxAdminName.Text = "Name";
             // 
-            // textBox2
+            // textBoxAdminID
             // 
-            this.textBox2.Location = new System.Drawing.Point(51, 120);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 1;
-            this.textBox2.Text = "ID";
+            this.textBoxAdminID.Location = new System.Drawing.Point(51, 120);
+            this.textBoxAdminID.Name = "textBoxAdminID";
+            this.textBoxAdminID.Size = new System.Drawing.Size(100, 20);
+            this.textBoxAdminID.TabIndex = 1;
+            this.textBoxAdminID.Text = "ID";
             // 
             // label1
             // 
@@ -65,13 +68,13 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Current staff";
             // 
-            // textBox3
+            // textBoxAdminNewName
             // 
-            this.textBox3.Location = new System.Drawing.Point(226, 73);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 3;
-            this.textBox3.Text = "Name";
+            this.textBoxAdminNewName.Location = new System.Drawing.Point(226, 73);
+            this.textBoxAdminNewName.Name = "textBoxAdminNewName";
+            this.textBoxAdminNewName.Size = new System.Drawing.Size(100, 20);
+            this.textBoxAdminNewName.TabIndex = 3;
+            this.textBoxAdminNewName.Text = "Name";
             // 
             // label2
             // 
@@ -128,25 +131,45 @@
             this.label7.TabIndex = 12;
             this.label7.Text = "ALT+L to close Admin";
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 176);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(582, 22);
+            this.statusStrip1.TabIndex = 13;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(77, 17);
+            this.toolStripStatusLabel1.Text = "Admin status";
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(582, 198);
             this.ControlBox = false;
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.textBoxAdminNewName);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxAdminID);
+            this.Controls.Add(this.textBoxAdminName);
             this.KeyPreview = true;
             this.Name = "AdminForm";
             this.Text = "AdminForm";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AdminForm_KeyDown);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -154,15 +177,17 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxAdminName;
+        private System.Windows.Forms.TextBox textBoxAdminID;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBoxAdminNewName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
     }
 }

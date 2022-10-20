@@ -58,5 +58,21 @@ namespace WindowsMultiFormsApp
             foreach (var staff in masterFile)
                 listBoxAllStaffs.Items.Add(staff.Key + "\t" + staff.Value);
         }
+
+        /*
+         * 4.9.	Create a method that will open the Admin Form when the Alt + A keys 
+         *      are pressed. Ensure the General Form sends the currently selected Staff ID 
+         *      and Staff Name to the Admin Form for Update and Delete purposes and 
+         *      is opened as modal. Create modified logic to open the Admin Form to 
+         *      Create a new user when a new Staff Name is entered into the textbox.
+         */
+        private void GeneralForm_KeyDown(object sender, KeyEventArgs e)
+        {          
+            if (e.Alt && e.KeyCode == Keys.A)
+            {
+                using (Form adminForm = new AdminForm())
+                    adminForm.ShowDialog(this);
+            }
+        }
     }
 }

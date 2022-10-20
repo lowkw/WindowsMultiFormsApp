@@ -30,16 +30,16 @@
         {
             this.listBoxAllStaffs = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.listBox2 = new System.Windows.Forms.ListBox();
-            this.listBox3 = new System.Windows.Forms.ListBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.listBoxName = new System.Windows.Forms.ListBox();
+            this.listBoxID = new System.Windows.Forms.ListBox();
+            this.textBoxID = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBoxNewName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -61,13 +61,13 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Malin Staff Records";
             // 
-            // textBox1
+            // textBoxName
             // 
-            this.textBox1.Location = new System.Drawing.Point(333, 56);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.Text = "Enter name";
+            this.textBoxName.Location = new System.Drawing.Point(333, 56);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(100, 20);
+            this.textBoxName.TabIndex = 2;
+            this.textBoxName.Text = "Enter name";
             // 
             // label2
             // 
@@ -78,29 +78,29 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Current staff";
             // 
-            // listBox2
+            // listBoxName
             // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(333, 102);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(120, 95);
-            this.listBox2.TabIndex = 4;
+            this.listBoxName.FormattingEnabled = true;
+            this.listBoxName.Location = new System.Drawing.Point(333, 102);
+            this.listBoxName.Name = "listBoxName";
+            this.listBoxName.Size = new System.Drawing.Size(120, 95);
+            this.listBoxName.TabIndex = 4;
             // 
-            // listBox3
+            // listBoxID
             // 
-            this.listBox3.FormattingEnabled = true;
-            this.listBox3.Location = new System.Drawing.Point(333, 259);
-            this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(120, 95);
-            this.listBox3.TabIndex = 5;
+            this.listBoxID.FormattingEnabled = true;
+            this.listBoxID.Location = new System.Drawing.Point(333, 259);
+            this.listBoxID.Name = "listBoxID";
+            this.listBoxID.Size = new System.Drawing.Size(120, 95);
+            this.listBoxID.TabIndex = 5;
             // 
-            // textBox2
+            // textBoxID
             // 
-            this.textBox2.Location = new System.Drawing.Point(333, 222);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 6;
-            this.textBox2.Text = "Enter ID";
+            this.textBoxID.Location = new System.Drawing.Point(333, 222);
+            this.textBoxID.Name = "textBoxID";
+            this.textBoxID.Size = new System.Drawing.Size(100, 20);
+            this.textBoxID.TabIndex = 6;
+            this.textBoxID.Text = "Enter ID";
             // 
             // label3
             // 
@@ -140,13 +140,13 @@
             this.label6.TabIndex = 10;
             this.label6.Text = "ALT+A to access Admin Form";
             // 
-            // textBox3
+            // textBoxNewName
             // 
-            this.textBox3.Location = new System.Drawing.Point(333, 404);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 11;
-            this.textBox3.Text = "Enter name";
+            this.textBoxNewName.Location = new System.Drawing.Point(333, 404);
+            this.textBoxNewName.Name = "textBoxNewName";
+            this.textBoxNewName.Size = new System.Drawing.Size(100, 20);
+            this.textBoxNewName.TabIndex = 11;
+            this.textBoxNewName.Text = "Enter name";
             // 
             // label7
             // 
@@ -163,21 +163,23 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(696, 468);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.textBoxNewName);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.listBox3);
-            this.Controls.Add(this.listBox2);
+            this.Controls.Add(this.textBoxID);
+            this.Controls.Add(this.listBoxID);
+            this.Controls.Add(this.listBoxName);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listBoxAllStaffs);
+            this.KeyPreview = true;
             this.Name = "GeneralForm";
             this.Text = "GeneralForm";
             this.Load += new System.EventHandler(this.GeneralForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GeneralForm_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -187,16 +189,16 @@
 
         private System.Windows.Forms.ListBox listBoxAllStaffs;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListBox listBox2;
-        private System.Windows.Forms.ListBox listBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.ListBox listBoxName;
+        private System.Windows.Forms.ListBox listBoxID;
+        private System.Windows.Forms.TextBox textBoxID;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBoxNewName;
         private System.Windows.Forms.Label label7;
     }
 }
