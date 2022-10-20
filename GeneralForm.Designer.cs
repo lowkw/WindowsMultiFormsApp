@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listBoxAllStaffs = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -43,13 +43,14 @@
             this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // listBox1
+            // listBoxAllStaffs
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(35, 56);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(231, 368);
-            this.listBox1.TabIndex = 0;
+            this.listBoxAllStaffs.FormattingEnabled = true;
+            this.listBoxAllStaffs.Location = new System.Drawing.Point(35, 56);
+            this.listBoxAllStaffs.Name = "listBoxAllStaffs";
+            this.listBoxAllStaffs.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.listBoxAllStaffs.Size = new System.Drawing.Size(231, 368);
+            this.listBoxAllStaffs.TabIndex = 0;
             // 
             // label1
             // 
@@ -173,9 +174,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.listBoxAllStaffs);
             this.Name = "GeneralForm";
             this.Text = "GeneralForm";
+            this.Load += new System.EventHandler(this.GeneralForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -183,7 +185,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox listBoxAllStaffs;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
