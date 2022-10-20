@@ -35,7 +35,7 @@ namespace WindowsMultiFormsApp
         {
             if (File.Exists(@"../../Resources/MalinStaffNamesV2.csv"))
             {
-                string[] staffInfo = File.ReadAllLines(@"MalinStaffNamesV2.csv");
+                string[] staffInfo = File.ReadAllLines(@"../../Resources/MalinStaffNamesV2.csv");
                 string line;
                 string[] parts;
                 for (int x = 0; x < staffInfo.Length; x++)
