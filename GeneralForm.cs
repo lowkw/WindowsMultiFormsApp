@@ -75,10 +75,15 @@ namespace WindowsMultiFormsApp
             }
         }
 
+        /*
+         * 4.4.	Create a method to filter the Staff Name data from the Dictionary into
+         *      a second filtered and selectable listbox. This method must use a textbox input 
+         *      and update as each character is entered. The listbox must reflect the filtered 
+         *      data in real time.
+         */
         private void textBoxName_TextChanged(object sender, EventArgs e)
         {
-            listBoxName.Items.Clear();            
-            
+            listBoxName.Items.Clear();                        
             Dictionary<int, string>.ValueCollection valueColl = masterFile.Values;
             foreach (string s in valueColl)
             {
@@ -87,6 +92,23 @@ namespace WindowsMultiFormsApp
                     listBoxName.Items.Add(s);
                 }
             }                                    
+        }
+        /*
+         * 4.5.	Create a method to filter the Staff ID data from the Dictionary into 
+         *      the second filtered and selectable list box. This method must use a 
+         *      textbox input and update as each number is entered. The listbox must 
+         *      reflect the filtered data in real time.
+         */
+        private void textBoxID_TextChanged(object sender, EventArgs e)
+        {
+            listBoxID.Items.Clear();
+            Dictionary<int, string>.KeyCollection keyColl = masterFile.Keys;
+            foreach (int i in keyColl){
+                if (i.ToString().Contains(textBoxID.Text))
+                {
+                    listBoxID.Items.Add(i);
+                }
+            }
         }
     }
 }

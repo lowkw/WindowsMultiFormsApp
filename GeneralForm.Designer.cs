@@ -102,6 +102,7 @@
             this.textBoxID.Size = new System.Drawing.Size(100, 20);
             this.textBoxID.TabIndex = 6;
             this.textBoxID.Text = "Enter ID";
+            this.textBoxID.TextChanged += new System.EventHandler(this.textBoxID_TextChanged);
             // 
             // label3
             // 
