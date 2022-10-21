@@ -68,6 +68,7 @@
             this.textBoxName.Size = new System.Drawing.Size(100, 20);
             this.textBoxName.TabIndex = 2;
             this.textBoxName.Text = "Enter name";
+            this.textBoxName.TextChanged += new System.EventHandler(this.textBoxName_TextChanged);
             // 
             // label2
             // 

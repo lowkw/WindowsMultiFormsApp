@@ -74,5 +74,19 @@ namespace WindowsMultiFormsApp
                     adminForm.ShowDialog(this);
             }
         }
+
+        private void textBoxName_TextChanged(object sender, EventArgs e)
+        {
+            listBoxName.Items.Clear();            
+            
+            Dictionary<int, string>.ValueCollection valueColl = masterFile.Values;
+            foreach (string s in valueColl)
+            {
+                if (s.Contains(textBoxName.Text))
+                {
+                    listBoxName.Items.Add(s);
+                }
+            }                                    
+        }
     }
 }
