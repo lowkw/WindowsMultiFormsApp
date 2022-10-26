@@ -40,6 +40,9 @@
             this.label7 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,15 +52,14 @@
             this.textBoxAdminName.Name = "textBoxAdminName";
             this.textBoxAdminName.Size = new System.Drawing.Size(100, 20);
             this.textBoxAdminName.TabIndex = 0;
-            this.textBoxAdminName.Text = "Name";
             // 
             // textBoxAdminID
             // 
             this.textBoxAdminID.Location = new System.Drawing.Point(51, 120);
             this.textBoxAdminID.Name = "textBoxAdminID";
+            this.textBoxAdminID.ReadOnly = true;
             this.textBoxAdminID.Size = new System.Drawing.Size(100, 20);
             this.textBoxAdminID.TabIndex = 1;
-            this.textBoxAdminID.Text = "ID";
             // 
             // label1
             // 
@@ -72,9 +74,9 @@
             // 
             this.textBoxAdminNewName.Location = new System.Drawing.Point(226, 73);
             this.textBoxAdminNewName.Name = "textBoxAdminNewName";
+            this.textBoxAdminNewName.ReadOnly = true;
             this.textBoxAdminNewName.Size = new System.Drawing.Size(100, 20);
             this.textBoxAdminNewName.TabIndex = 3;
-            this.textBoxAdminNewName.Text = "Name";
             // 
             // label2
             // 
@@ -147,12 +149,42 @@
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(77, 17);
             this.toolStripStatusLabel1.Text = "Admin status";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(51, 56);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(35, 13);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "Name";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(226, 56);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(35, 13);
+            this.label9.TabIndex = 15;
+            this.label9.Text = "Name";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(54, 100);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(18, 13);
+            this.label10.TabIndex = 16;
+            this.label10.Text = "ID";
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(582, 198);
             this.ControlBox = false;
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -189,5 +221,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
     }
 }

@@ -32,8 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.listBoxName = new System.Windows.Forms.ListBox();
-            this.listBoxID = new System.Windows.Forms.ListBox();
+            this.listBoxNameID = new System.Windows.Forms.ListBox();
             this.textBoxID = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -41,6 +40,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.textBoxNewName = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // listBoxAllStaffs
@@ -67,7 +69,7 @@
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(100, 20);
             this.textBoxName.TabIndex = 2;
-            this.textBoxName.Text = "Enter name";
+            this.textBoxName.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBoxName_MouseClick);
             this.textBoxName.TextChanged += new System.EventHandler(this.textBoxName_TextChanged);
             // 
             // label2
@@ -79,29 +81,22 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Current staff";
             // 
-            // listBoxName
+            // listBoxNameID
             // 
-            this.listBoxName.FormattingEnabled = true;
-            this.listBoxName.Location = new System.Drawing.Point(333, 102);
-            this.listBoxName.Name = "listBoxName";
-            this.listBoxName.Size = new System.Drawing.Size(120, 95);
-            this.listBoxName.TabIndex = 4;
-            // 
-            // listBoxID
-            // 
-            this.listBoxID.FormattingEnabled = true;
-            this.listBoxID.Location = new System.Drawing.Point(333, 259);
-            this.listBoxID.Name = "listBoxID";
-            this.listBoxID.Size = new System.Drawing.Size(120, 95);
-            this.listBoxID.TabIndex = 5;
+            this.listBoxNameID.FormattingEnabled = true;
+            this.listBoxNameID.Location = new System.Drawing.Point(333, 140);
+            this.listBoxNameID.Name = "listBoxNameID";
+            this.listBoxNameID.Size = new System.Drawing.Size(289, 186);
+            this.listBoxNameID.TabIndex = 4;
+            this.listBoxNameID.SelectedIndexChanged += new System.EventHandler(this.listBoxNameID_SelectedIndexChanged);
             // 
             // textBoxID
             // 
-            this.textBoxID.Location = new System.Drawing.Point(333, 222);
+            this.textBoxID.Location = new System.Drawing.Point(333, 98);
             this.textBoxID.Name = "textBoxID";
             this.textBoxID.Size = new System.Drawing.Size(100, 20);
             this.textBoxID.TabIndex = 6;
-            this.textBoxID.Text = "Enter ID";
+            this.textBoxID.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBoxID_MouseClick);
             this.textBoxID.TextChanged += new System.EventHandler(this.textBoxID_TextChanged);
             // 
             // label3
@@ -126,7 +121,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(509, 222);
+            this.label5.Location = new System.Drawing.Point(509, 101);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(88, 13);
             this.label5.TabIndex = 9;
@@ -148,7 +143,7 @@
             this.textBoxNewName.Name = "textBoxNewName";
             this.textBoxNewName.Size = new System.Drawing.Size(100, 20);
             this.textBoxNewName.TabIndex = 11;
-            this.textBoxNewName.Text = "Enter name";
+            this.textBoxNewName.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBoxNewName_MouseClick);
             // 
             // label7
             // 
@@ -159,11 +154,41 @@
             this.label7.TabIndex = 12;
             this.label7.Text = "New staff";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(440, 62);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(35, 13);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "Name";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(443, 104);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(18, 13);
+            this.label9.TabIndex = 14;
+            this.label9.Text = "ID";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(446, 410);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(35, 13);
+            this.label10.TabIndex = 15;
+            this.label10.Text = "Name";
+            // 
             // GeneralForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(696, 468);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textBoxNewName);
             this.Controls.Add(this.label6);
@@ -171,8 +196,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBoxID);
-            this.Controls.Add(this.listBoxID);
-            this.Controls.Add(this.listBoxName);
+            this.Controls.Add(this.listBoxNameID);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.label1);
@@ -193,8 +217,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListBox listBoxName;
-        private System.Windows.Forms.ListBox listBoxID;
+        private System.Windows.Forms.ListBox listBoxNameID;
         private System.Windows.Forms.TextBox textBoxID;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -202,6 +225,9 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBoxNewName;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
     }
 }
 
