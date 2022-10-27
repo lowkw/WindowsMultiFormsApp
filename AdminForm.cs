@@ -14,8 +14,8 @@ namespace WindowsMultiFormsApp
     public partial class AdminForm : Form
     {
         public static int staffID { get; set; }
-        //Dictionary<int, string> masterFile;
-        SortedDictionary<int, string> masterFile;
+        Dictionary<int, string> masterFile;
+        //SortedDictionary<int, string> masterFile;
         public AdminForm()
         {
             InitializeComponent();            
