@@ -18,8 +18,8 @@ namespace WindowsMultiFormsApp
          * 4.1.	Create a Dictionary data structure with a TKey of type integer and 
          *      a TValue of type string, name the new structure “MasterFile”.
          */
-        public static Dictionary<int, string> masterFile = new Dictionary<int, string>();
-        //public static SortedDictionary<int, string> masterFile = new SortedDictionary<int, string>();
+        //public static Dictionary<int, string> masterFile = new Dictionary<int, string>();
+        public static SortedDictionary<int, string> masterFile = new SortedDictionary<int, string>();
         public GeneralForm()
         {
             InitializeComponent();
