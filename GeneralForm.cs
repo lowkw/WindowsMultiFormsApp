@@ -47,12 +47,12 @@ namespace WindowsMultiFormsApp
                     parts = line.Split(',');
                     masterFile.Add(int.Parse(parts[0]), parts[1]);
                 }
-                */
+                */                
                 foreach (string line in File.ReadLines(@"../../Resources/MalinStaffNamesV2.csv"))
                 {
                     parts = line.Split(',');
                     masterFile.Add(int.Parse(parts[0]), parts[1]);
-                }
+                }                
                 DisplayAllStaffs();
             }
             else
@@ -206,7 +206,7 @@ namespace WindowsMultiFormsApp
             {
                 listBoxAllStaffs.Items.Clear();
                 string[] parts;
-                /*
+                /*                
                 string[] staffInfo = File.ReadAllLines(@"../../Resources/MalinStaffNamesV2.csv");
                 string line;                                
                 for (int x = 0; x < staffInfo.Length; x++)
@@ -215,12 +215,12 @@ namespace WindowsMultiFormsApp
                     parts = line.Split(',');                    
                     listBoxAllStaffs.Items.Add(parts[0] + "\t" + parts[1]);
                 }
-                */
+                */                
                 foreach (string line in File.ReadLines(@"../../Resources/MalinStaffNamesV2.csv"))
                 {
                     parts = line.Split(',');                    
                     listBoxAllStaffs.Items.Add(parts[0] + "\t" + parts[1]);
-                }
+                }                
             }
             else
                 MessageBox.Show("File did not load");

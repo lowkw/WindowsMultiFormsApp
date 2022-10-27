@@ -122,13 +122,13 @@ namespace WindowsMultiFormsApp
                     strList.Add(kvp.Key.ToString() + "," + kvp.Value);
                 }
                 File.AppendAllLines(filePath, strList);
-                */
+                */                
                 StringBuilder sb = new StringBuilder();
                 foreach (KeyValuePair<int, string> kvp in masterFile)
                 {
                     sb.Append(kvp.Key.ToString() + "," + kvp.Value + "\n");                    
                 }
-                File.AppendAllText(filePath, sb.ToString());                
+                File.AppendAllText(filePath, sb.ToString());                                
             }
         }
     }
