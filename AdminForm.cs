@@ -13,7 +13,9 @@ namespace WindowsMultiFormsApp
 {
     public partial class AdminForm : Form
     {
-        Dictionary<int, string> masterFile;
+        public static int staffID { get; set; }
+        //Dictionary<int, string> masterFile;
+        SortedDictionary<int, string> masterFile;
         public AdminForm()
         {
             InitializeComponent();            
@@ -22,12 +24,11 @@ namespace WindowsMultiFormsApp
          * 5.2.	Create a method that will receive the Staff ID from the general form 
          *      and then populate textboxes with the related data.
          */
-        public AdminForm(string strAdminName, string strAdminID, string strAdminNewName)
+        public AdminForm(string strAdminName, string strAdminID)
         {
             InitializeComponent();
             textBoxAdminName.Text = strAdminName;
-            textBoxAdminID.Text = strAdminID;
-            textBoxAdminNewName.Text = strAdminNewName;
+            textBoxAdminID.Text = strAdminID;            
             masterFile = GeneralForm.masterFile;
         }
 
@@ -50,20 +51,22 @@ namespace WindowsMultiFormsApp
          */
         private void CreateStaffRec()
         {
-            if (!String.IsNullOrEmpty(textBoxAdminNewName.Text))
+            if (!String.IsNullOrEmpty(textBoxAdminName.Text))
             {
                 bool addNewStaff = false;
                 while (!addNewStaff)
                 {
                     Random r = new Random();
+                    staffID = r.Next(770000000, 780000000);
                     try
                     {
-                        masterFile.Add(r.Next(770000000,780000000), textBoxAdminNewName.Text);
+                        masterFile.Add(staffID, textBoxAdminName.Text);
                         addNewStaff = true;
                     }
                     catch { }
                 }
-                toolStripStatusLabel1.Text = "New staff record created";
+                WriteStaffsToFile();
+                this.Dispose();
             } else
                 toolStripStatusLabel1.Text = "New staff record not created because staff name is blanks";
         }
@@ -73,8 +76,10 @@ namespace WindowsMultiFormsApp
         private void UpdateStaffRec()
         {
             if (!String.IsNullOrEmpty(textBoxAdminID.Text)) {
-                masterFile[Int32.Parse(textBoxAdminID.Text)] = textBoxAdminName.Text;
-                toolStripStatusLabel1.Text = "Staff name updated"; 
+                staffID = Int32.Parse(textBoxAdminID.Text);
+                masterFile[staffID] = textBoxAdminName.Text;
+                WriteStaffsToFile();
+                this.Dispose();
             } else
                 toolStripStatusLabel1.Text = "Current staff name not updated because staff ID is blanks";
         }
@@ -84,10 +89,10 @@ namespace WindowsMultiFormsApp
         private void DeleteStaffRec()
         {
             if (!String.IsNullOrEmpty(textBoxAdminID.Text)) {
-                masterFile.Remove(Int32.Parse(textBoxAdminID.Text));
-                textBoxAdminID.Clear();
-                textBoxAdminName.Clear();
-                toolStripStatusLabel1.Text = "Staff record deleted";
+                staffID = 0;
+                masterFile.Remove(Int32.Parse(textBoxAdminID.Text));                
+                WriteStaffsToFile();
+                this.Dispose();
             } else
                 toolStripStatusLabel1.Text = "Current staff record not deleted because staff ID is blanks";
         }
@@ -97,7 +102,7 @@ namespace WindowsMultiFormsApp
          */
         private void CloseAdminForm()
         {
-            WriteStaffsToFile();
+            staffID = -1;
             this.Dispose();            
         }
         /*
@@ -110,12 +115,20 @@ namespace WindowsMultiFormsApp
             if (File.Exists(filePath))
             {
                 File.Delete(filePath);
+                /*
                 List<string> strList = new List<string>();
                 foreach (KeyValuePair<int, string> kvp in masterFile)
                 {
                     strList.Add(kvp.Key.ToString() + "," + kvp.Value);
                 }
                 File.AppendAllLines(filePath, strList);
+                */
+                StringBuilder sb = new StringBuilder();
+                foreach (KeyValuePair<int, string> kvp in masterFile)
+                {
+                    sb.Append(kvp.Key.ToString() + "," + kvp.Value + "\n");                    
+                }
+                File.AppendAllText(filePath, sb.ToString());                
             }
         }
     }

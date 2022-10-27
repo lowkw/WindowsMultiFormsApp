@@ -31,8 +31,6 @@
             this.textBoxAdminName = new System.Windows.Forms.TextBox();
             this.textBoxAdminID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBoxAdminNewName = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -41,7 +39,6 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -50,12 +47,12 @@
             // 
             this.textBoxAdminName.Location = new System.Drawing.Point(51, 73);
             this.textBoxAdminName.Name = "textBoxAdminName";
-            this.textBoxAdminName.Size = new System.Drawing.Size(100, 20);
+            this.textBoxAdminName.Size = new System.Drawing.Size(139, 20);
             this.textBoxAdminName.TabIndex = 0;
             // 
             // textBoxAdminID
             // 
-            this.textBoxAdminID.Location = new System.Drawing.Point(51, 120);
+            this.textBoxAdminID.Location = new System.Drawing.Point(224, 72);
             this.textBoxAdminID.Name = "textBoxAdminID";
             this.textBoxAdminID.ReadOnly = true;
             this.textBoxAdminID.Size = new System.Drawing.Size(100, 20);
@@ -66,26 +63,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(51, 29);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 13);
+            this.label1.Size = new System.Drawing.Size(29, 13);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Current staff";
-            // 
-            // textBoxAdminNewName
-            // 
-            this.textBoxAdminNewName.Location = new System.Drawing.Point(226, 73);
-            this.textBoxAdminNewName.Name = "textBoxAdminNewName";
-            this.textBoxAdminNewName.ReadOnly = true;
-            this.textBoxAdminNewName.Size = new System.Drawing.Size(100, 20);
-            this.textBoxAdminNewName.TabIndex = 3;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(223, 29);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(52, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "New staff";
+            this.label1.Text = "Staff";
             // 
             // label3
             // 
@@ -158,19 +138,10 @@
             this.label8.TabIndex = 14;
             this.label8.Text = "Name";
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(226, 56);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(35, 13);
-            this.label9.TabIndex = 15;
-            this.label9.Text = "Name";
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(54, 100);
+            this.label10.Location = new System.Drawing.Point(221, 56);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(18, 13);
             this.label10.TabIndex = 16;
@@ -183,7 +154,6 @@
             this.ClientSize = new System.Drawing.Size(582, 198);
             this.ControlBox = false;
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.label7);
@@ -191,8 +161,6 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBoxAdminNewName);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxAdminID);
             this.Controls.Add(this.textBoxAdminName);
@@ -212,8 +180,6 @@
         private System.Windows.Forms.TextBox textBoxAdminName;
         private System.Windows.Forms.TextBox textBoxAdminID;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBoxAdminNewName;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
@@ -222,7 +188,6 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
     }
 }

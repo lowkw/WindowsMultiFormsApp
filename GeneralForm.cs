@@ -13,11 +13,13 @@ namespace WindowsMultiFormsApp
 {
     public partial class GeneralForm : Form
     {
+        bool listBoxNameIDSelected = false;
         /*
          * 4.1.	Create a Dictionary data structure with a TKey of type integer and 
          *      a TValue of type string, name the new structure “MasterFile”.
          */
-        public static Dictionary<int, string> masterFile = new Dictionary<int, string>();
+        //public static Dictionary<int, string> masterFile = new Dictionary<int, string>();
+        public static SortedDictionary<int, string> masterFile = new SortedDictionary<int, string>();
         public GeneralForm()
         {
             InitializeComponent();
@@ -25,7 +27,7 @@ namespace WindowsMultiFormsApp
         
         private void GeneralForm_Load(object sender, EventArgs e)
         {
-            ReadStaffsFromFile();
+            ReadStaffsFromFile();            
         }
         /*
          * 4.2.	Create a method that will read the data from the .csv file into 
@@ -34,13 +36,20 @@ namespace WindowsMultiFormsApp
         private void ReadStaffsFromFile()
         {
             if (File.Exists(@"../../Resources/MalinStaffNamesV2.csv"))
-            {
+            {                                
+                string[] parts;
+                /*                
                 string[] staffInfo = File.ReadAllLines(@"../../Resources/MalinStaffNamesV2.csv");
                 string line;
-                string[] parts;
                 for (int x = 0; x < staffInfo.Length; x++)
                 {                    
                     line = staffInfo[x];
+                    parts = line.Split(',');
+                    masterFile.Add(int.Parse(parts[0]), parts[1]);
+                }
+                */
+                foreach (string line in File.ReadLines(@"../../Resources/MalinStaffNamesV2.csv"))
+                {
                     parts = line.Split(',');
                     masterFile.Add(int.Parse(parts[0]), parts[1]);
                 }
@@ -57,22 +66,7 @@ namespace WindowsMultiFormsApp
             listBoxAllStaffs.Items.Clear();
             foreach (var staff in masterFile)
                 listBoxAllStaffs.Items.Add(staff.Key + "\t" + staff.Value);
-        }
-        private void textBoxName_MouseClick(object sender, MouseEventArgs e)
-        {
-            textBoxNewName.Clear();
-        }
-        private void textBoxID_MouseClick(object sender, MouseEventArgs e)
-        {
-            textBoxNewName.Clear();
-        }
-        private void textBoxNewName_MouseClick(object sender, MouseEventArgs e)
-        {
-            textBoxName.Clear();
-            textBoxID.Clear();
-            listBoxNameID.Items.Clear();
-        }
-
+        }                
         /*
          * 4.4.	Create a method to filter the Staff Name data from the Dictionary into
          *      a second filtered and selectable listbox. This method must use a textbox input 
@@ -118,14 +112,19 @@ namespace WindowsMultiFormsApp
          * 4.8.	Create a method for the filtered and selectable listbox which will 
          *      populate the two textboxes when a staff record is selected.
          */
-        private void listBoxNameID_SelectedIndexChanged(object sender, EventArgs e)
-        {            
-            string[] subs= listBoxNameID.Text.ToString().Split('\t');
-            textBoxName.Text = subs[1];
-            textBoxID.Text = subs[0];
-            textBoxNewName.Clear();
-            listBoxNameID.SelectedIndex = 0;
-        }                
+        private void listBoxNameID_KeyDown(object sender, KeyEventArgs e)
+        {
+            listBoxNameIDSelected = false;
+            if (listBoxNameID.Items.Count > 0 && e.KeyCode == Keys.Enter && listBoxNameID.SelectedIndex != -1)
+            {
+                string[] subs = listBoxNameID.SelectedItem.ToString().Split('\t');
+                textBoxName.Text = subs[1];
+                textBoxID.Text = subs[0];
+                listBoxNameIDSelected = true;
+                listBoxNameID.SelectedIndex = 0;
+                textBoxName.Focus();
+            }
+        }
         private void GeneralForm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Alt && e.KeyCode == Keys.N)
@@ -134,6 +133,8 @@ namespace WindowsMultiFormsApp
                 ClearIDTextbox();
             if (e.Alt && e.KeyCode == Keys.A)
                 OpenAdminForm();
+            if (e.Alt && e.KeyCode == Keys.L)
+                this.Close();
         }
         /*
          * 4.6.	Create a method for the Staff Name textbox which will clear the contents 
@@ -163,22 +164,66 @@ namespace WindowsMultiFormsApp
          */
         private void OpenAdminForm()
         {
-            if ((String.IsNullOrEmpty(textBoxName.Text) || String.IsNullOrEmpty(textBoxID.Text) ||
-                    listBoxNameID.SelectedIndex == -1) && String.IsNullOrEmpty(textBoxNewName.Text))
+            if (String.IsNullOrEmpty(textBoxName.Text) && 
+                (!listBoxNameIDSelected || listBoxNameID.SelectedIndex==-1))
             {
                 MessageBox.Show("Please select a current staff record or enter the new staff's name.");
             }
-            else if (!String.IsNullOrEmpty(textBoxNewName.Text) && textBoxNewName.Text.ToString().Any(c => char.IsDigit(c)))
+            else if (!String.IsNullOrEmpty(textBoxName.Text) && textBoxName.Text.ToString().Any(c => char.IsDigit(c)))
             {
-                MessageBox.Show("Please enter the alphabet letters only to new staff name.");
-                textBoxNewName.Focus();
+                MessageBox.Show("Please enter the alphabet letters only to staff name.");
+                textBoxName.Focus();
             }
             else
             {
+                if (!listBoxNameIDSelected || listBoxNameID.SelectedIndex == -1)
+                {
+                    // to prevent update and delete operations
+                    textBoxID.Clear();
+                }
                 listBoxNameID.Items.Clear();
-                using (Form adminForm = new AdminForm(textBoxName.Text, textBoxID.Text, textBoxNewName.Text))
+                using (Form adminForm = new AdminForm(textBoxName.Text, textBoxID.Text))
                     adminForm.ShowDialog(this);
+                textBoxID.Text = AdminForm.staffID.ToString();
+                textBoxName.Clear();
+                listBoxNameID.Items.Clear();
+                //show staff record that has been created or updated
+                if (AdminForm.staffID > 0)
+                {
+                    listBoxNameID.Items.Add(textBoxID.Text + "\t" + masterFile[AdminForm.staffID]);                    
+                }
+                else
+                    textBoxID.Clear();
+                textBoxID.Focus();
+                //load csv file that has been changed
+                if (AdminForm.staffID != -1)
+                    ReadFromUpdatedFile();
             }
         }
+        private void ReadFromUpdatedFile()
+        {
+            if (File.Exists(@"../../Resources/MalinStaffNamesV2.csv"))
+            {
+                listBoxAllStaffs.Items.Clear();
+                string[] parts;
+                /*
+                string[] staffInfo = File.ReadAllLines(@"../../Resources/MalinStaffNamesV2.csv");
+                string line;                                
+                for (int x = 0; x < staffInfo.Length; x++)
+                {
+                    line = staffInfo[x];
+                    parts = line.Split(',');                    
+                    listBoxAllStaffs.Items.Add(parts[0] + "\t" + parts[1]);
+                }
+                */
+                foreach (string line in File.ReadLines(@"../../Resources/MalinStaffNamesV2.csv"))
+                {
+                    parts = line.Split(',');                    
+                    listBoxAllStaffs.Items.Add(parts[0] + "\t" + parts[1]);
+                }
+            }
+            else
+                MessageBox.Show("File did not load");
+        }        
     }
 }
