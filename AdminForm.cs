@@ -51,7 +51,15 @@ namespace WindowsMultiFormsApp
          */
         private void CreateStaffRec()
         {
-            if (!String.IsNullOrEmpty(textBoxAdminName.Text))
+            if (textBoxAdminName.Text.ToString().Any(c => char.IsDigit(c)))
+            {
+                toolStripStatusLabel1.Text = "Please enter the alphabet letters only to staff name.";
+            }
+            else if (String.IsNullOrEmpty(textBoxAdminName.Text))
+            {
+                toolStripStatusLabel1.Text = "New staff record not created because staff name is blanks";
+            }
+            else
             {
                 bool addNewStaff = false;
                 while (!addNewStaff)
@@ -67,19 +75,28 @@ namespace WindowsMultiFormsApp
                 }
                 WriteStaffsToFile();
                 this.Dispose();
-            } else
-                toolStripStatusLabel1.Text = "New staff record not created because staff name is blanks";
+            }
         }
         /*
          * 5.4.	Create a method that will Update the name of the current Staff ID.
          */
         private void UpdateStaffRec()
-        {
+        {            
             if (!String.IsNullOrEmpty(textBoxAdminID.Text)) {
-                staffID = Int32.Parse(textBoxAdminID.Text);
-                masterFile[staffID] = textBoxAdminName.Text;
-                WriteStaffsToFile();
-                this.Dispose();
+                if (textBoxAdminName.Text.ToString().Any(c => char.IsDigit(c)))
+                {
+                    toolStripStatusLabel1.Text = "Please enter the alphabet letters only to staff name.";
+                } else if (String.IsNullOrEmpty(textBoxAdminName.Text))
+                {
+                    toolStripStatusLabel1.Text = "Staff record not updated because staff name is blanks";
+                }
+                else
+                {
+                    staffID = Int32.Parse(textBoxAdminID.Text);
+                    masterFile[staffID] = textBoxAdminName.Text;
+                    WriteStaffsToFile();
+                    this.Dispose();
+                }
             } else
                 toolStripStatusLabel1.Text = "Current staff name not updated because staff ID is blanks";
         }
