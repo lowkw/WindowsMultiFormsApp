@@ -82,7 +82,10 @@ namespace WindowsMultiFormsApp
          */
         private void UpdateStaffRec()
         {            
-            if (!String.IsNullOrEmpty(textBoxAdminID.Text)) {
+            if (String.IsNullOrEmpty(textBoxAdminID.Text))
+                toolStripStatusLabel1.Text = "Staff name not updated because staff ID is blanks";
+            else
+            {
                 if (textBoxAdminName.Text.ToString().Any(c => char.IsDigit(c)))
                 {
                     toolStripStatusLabel1.Text = "Please enter the alphabet letters only to staff name.";
@@ -97,21 +100,22 @@ namespace WindowsMultiFormsApp
                     WriteStaffsToFile();
                     this.Dispose();
                 }
-            } else
-                toolStripStatusLabel1.Text = "Current staff name not updated because staff ID is blanks";
+            } 
         }
         /*
          * 5.5.	Create a method that will Remove the current Staff ID and clear the text boxes.
          */
         private void DeleteStaffRec()
         {
-            if (!String.IsNullOrEmpty(textBoxAdminID.Text)) {
+            if (String.IsNullOrEmpty(textBoxAdminID.Text))
+                toolStripStatusLabel1.Text = "Staff record not deleted because staff ID is blanks";
+            else
+            {
                 staffID = 0;
                 masterFile.Remove(Int32.Parse(textBoxAdminID.Text));                
                 WriteStaffsToFile();
                 this.Dispose();
-            } else
-                toolStripStatusLabel1.Text = "Current staff record not deleted because staff ID is blanks";
+            }                 
         }
         /*
          * 5.7.	Create a method that will close the Admin Form when 

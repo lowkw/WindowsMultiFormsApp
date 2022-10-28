@@ -133,6 +133,8 @@ namespace WindowsMultiFormsApp
                 ClearIDTextbox();
             if (e.Alt && e.KeyCode == Keys.A)
                 OpenAdminForm();
+            if (e.Alt && e.KeyCode == Keys.R)
+                ReadFromUpdatedFile();
             if (e.Alt && e.KeyCode == Keys.L)
                 this.Close();
         }
@@ -169,7 +171,7 @@ namespace WindowsMultiFormsApp
             {
                 MessageBox.Show("Please select a current staff record or enter the new staff's name.");
             }
-            else if (!String.IsNullOrEmpty(textBoxName.Text) && textBoxName.Text.ToString().Any(c => char.IsDigit(c)))
+            else if (textBoxName.Text.ToString().Any(c => char.IsDigit(c)))
             {
                 MessageBox.Show("Please enter the alphabet letters only to staff name.");
                 textBoxName.Focus();
@@ -189,17 +191,14 @@ namespace WindowsMultiFormsApp
                 listBoxNameID.Items.Clear();
                 //show staff record that has been created or updated
                 if (AdminForm.staffID > 0)
-                {
+                {                    
                     listBoxNameID.Items.Add(textBoxID.Text + "\t" + masterFile[AdminForm.staffID]);                    
                 }
                 else
                     textBoxID.Clear();
-                textBoxID.Focus();
-                //load csv file that has been changed
-                if (AdminForm.staffID != -1)
-                    ReadFromUpdatedFile();
+                textBoxID.Focus();                
             }
-        }
+        }        
         private void ReadFromUpdatedFile()
         {
             if (File.Exists(@"../../Resources/MalinStaffNamesV2.csv"))
@@ -224,6 +223,6 @@ namespace WindowsMultiFormsApp
             }
             else
                 MessageBox.Show("File did not load");
-        }        
+        }                
     }
 }

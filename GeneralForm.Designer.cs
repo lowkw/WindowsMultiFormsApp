@@ -42,6 +42,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // listBoxAllStaffs
@@ -166,9 +167,18 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(333, 148);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(246, 13);
+            this.label7.Size = new System.Drawing.Size(288, 13);
             this.label7.TabIndex = 17;
-            this.label7.Text = "Use arrow key to scroll and press ENTER to select";
+            this.label7.Text = "Use arrow key to scroll and press ENTER to select a record";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(328, 410);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(146, 13);
+            this.label10.TabIndex = 18;
+            this.label10.Text = "ALT+R to reload staff records";
             // 
             // GeneralForm
             // 
@@ -176,6 +186,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(696, 468);
             this.ControlBox = false;
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label9);
@@ -216,6 +227,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label10;
     }
 }
 

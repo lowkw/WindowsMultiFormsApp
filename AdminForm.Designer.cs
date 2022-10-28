@@ -166,6 +166,7 @@
             this.Controls.Add(this.textBoxAdminName);
             this.KeyPreview = true;
             this.Name = "AdminForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminForm";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AdminForm_KeyDown);
             this.statusStrip1.ResumeLayout(false);
